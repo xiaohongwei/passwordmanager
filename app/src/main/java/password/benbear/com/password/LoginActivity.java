@@ -39,6 +39,7 @@ public class LoginActivity extends Activity
                         Intent intent2=new Intent();
                         intent2.setClass(getBaseContext(),MainActivity.class);
                         startActivity(intent2);
+                        finish();
                     }
                 }
 
@@ -48,5 +49,4 @@ public class LoginActivity extends Activity
                 }
             });
     }
-
 }

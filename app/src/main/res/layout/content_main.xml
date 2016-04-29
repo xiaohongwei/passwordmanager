@@ -12,8 +12,10 @@
     tools:context="password.benbear.com.password.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/infos"
+        android:layout_centerVertical="false"
+        android:layout_centerHorizontal="false" />
 </RelativeLayout>

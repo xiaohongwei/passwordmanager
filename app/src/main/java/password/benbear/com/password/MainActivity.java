@@ -12,6 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 主页面
@@ -26,14 +32,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -84,21 +90,42 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            showPwdItems(1);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            showPwdItems(2);
         } else if (id == R.id.nav_slideshow) {
-
+            showPwdItems(3);
         } else if (id == R.id.nav_manage) {
-
+            showPwdItems(4);
         } else if (id == R.id.nav_share) {
-
+            showPwdItems(5);
         } else if (id == R.id.nav_send) {
-
+            showPwdItems(6);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
+    }
+
+
+    public void showPwdItems(int type)
+    {
+        ListView list = (ListView)findViewById(R.id.infos);
+        list.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,getData(type)));
+    }
+
+
+    private List<String> getData(int type){
+
+        List<String> data = new ArrayList<String>();
+        data.add("测试数据1 "+type);
+        data.add("测试数据2 "+type);
+        data.add("测试数据3 "+type);
+        data.add("测试数据4 "+type);
+
+        return data;
     }
 }
